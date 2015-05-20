@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-With this plugin you can create menus for administration and assign roles and then display them in the frontend of the website. This plugin greatly streamlines workflow managers 
+With this plugin you can create menus for administration and assign roles and then display them in the frontend / backend of the website. This plugin greatly streamlines workflow managers 
 
 **BASIC OPTIONS**  
 
@@ -33,9 +33,10 @@ This section describes how to install the plugin and get it working.
 == Screenshots ==
 
 1. Manage your menus
-2. Assign a menu by role
+2. Assign a menu to each of the roles
 3. Admin menu
-4. Create menus
+4. Create a menu of administration for each of the roles
+5. If you enable the last option , all users except the administrator can view the corresponding menu in the administration and the original admin menu is hiding.
 
 == Changelog ==
 
