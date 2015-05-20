@@ -11,5 +11,6 @@ foreach ( $roles as $key => $rol ) {
 
 delete_option( 'frontend_admin_menu_status' );
 delete_option( 'frontend_admin_menu_admin_bar' );
+delete_option( 'frontend_admin_menu_admin_menu_backend' );
 
 

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin menu, menu frontend, admin menu frontend, manage menu frontend, roles menu, administration menu
 Requires at least: 3.4
 Tested up to: 4.2.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,11 @@ This section describes how to install the plugin and get it working.
 4. Create menus
 
 == Changelog ==
+
+= Version 1.1 =
+* 	Add: Show menu in backend.
+*       Add: Hide / Show admin bar in backend.
+*       Add: Hide backend menu items
 
 = Version 1.0 =
 * 	initial version

@@ -3,14 +3,14 @@
 Plugin Name: Frontend admin menu
 Plugin URI: http://www.studiosweb.es/
 Description: Customizable menu administration from the frontend
-Version: 1.0
+Version: 1.1
 Author: Alberto Pérez
 Author URI: http://www.studiosweb.es
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ7J929GYWKLY
 License: A "Slug" license name e.g. GPL2
 */
 
-define( 'FRONTEND_ADMIN_MENU_VERSION', '1.0' );
+define( 'FRONTEND_ADMIN_MENU_VERSION', '1.1' );
 define( 'FRONTEND_ADMIN_MENU_DIR', plugin_dir_path(__FILE__) );
 define( 'FRONTEND_ADMIN_MENU_URL', plugin_dir_url(__FILE__) );
 
@@ -18,8 +18,14 @@ add_action( 'admin_enqueue_scripts', 'frontend_admin_menu_admin_resources' );
 
 function frontend_admin_menu_admin_resources() {
     
-    wp_register_style( 'frontend_admin_menu_css', FRONTEND_ADMIN_MENU_URL . 'admin/css/styles.css' );
+    wp_register_style( 'backend_admin_menu_css', FRONTEND_ADMIN_MENU_URL . 'admin/css/styles.css' );
+    wp_enqueue_style( 'backend_admin_menu_css' );
+    
+    wp_register_style( 'frontend_admin_menu_css', FRONTEND_ADMIN_MENU_URL . 'css/styles.css' );
     wp_enqueue_style( 'frontend_admin_menu_css' );
+    
+    wp_register_script( 'frontend_admin_menu_js', FRONTEND_ADMIN_MENU_URL . 'js/frontend-admin-menu.js', array( 'jquery' ), false, true  );
+    wp_enqueue_script( 'frontend_admin_menu_js' );
 
 }
 
@@ -67,6 +73,7 @@ function frontend_admin_menu_activation() {
     
     update_option( 'frontend_admin_menu_status', '1' );
     update_option( 'frontend_admin_menu_admin_bar', '0' );
+    update_option( 'frontend_admin_menu_admin_menu_backend', '0' );
     
 }
 
@@ -88,6 +95,7 @@ function frontend_admin_menu_menus() {
 
 
 add_action( 'wp_footer', 'frontend_admin_menu' );
+add_action( 'admin_footer', 'frontend_admin_menu' );
 
 function frontend_admin_menu() {
     
@@ -98,30 +106,81 @@ function frontend_admin_menu() {
         global $current_user;
         
         $enabled = get_option( 'frontend_admin_menu_status' );
-        $disabled_admin_bar = get_option( 'frontend_admin_menu_admin_bar' );
+        $backend_admin = get_option( 'frontend_admin_menu_admin_menu_backend' );
         
-        $rol = $current_user->roles[0];
+        $rol = $current_user->roles[0]; 
         
         if ( isset( $rol ) ) {
             
             $menu = get_option( 'frontend_admin_menu_mapping_' . $rol );
             
         }
-        
-        if ( $disabled_admin_bar > 0 && ! is_admin() ) {
 
-            add_filter( 'show_admin_bar' , '__return_false' );
+        if ( $enabled > 0 && ! empty( $menu ) ) {
             
+            if ( ! is_admin() ) {
+                
+                print frontend_admin_menu_render( $menu );
+                
+            } elseif ($backend_admin > 0 && $rol !== 'administrator' ) {
+                
+                print frontend_admin_menu_render( $menu );
+                
+            }
         }
-
-        if ( $enabled > 0 && ! is_admin() && ! empty( $menu ) ) {
-
-            print frontend_admin_menu_render( $menu );
-
-        }
-
     }
   
+}
+
+add_action( 'wp_head', 'frontend_admin_menu_admin_bar' );
+
+add_action( 'admin_head', 'frontend_admin_menu_admin_bar' );
+
+function frontend_admin_menu_admin_bar() { 
+    
+    $disabled_admin_bar = get_option( 'frontend_admin_menu_admin_bar' );
+    
+    if ( $disabled_admin_bar > 0 ) {
+        print '
+	<style type="text/css">
+		#wpadminbar {
+                    display:none;
+		}
+	</style>';
+    }
+}
+
+
+add_action( 'admin_menu', 'frontend_admin_menu_hide_items_backend_menu' );
+
+function frontend_admin_menu_hide_items_backend_menu () {
+
+    if ( is_user_logged_in() ) {
+        
+        global $current_user;
+
+        $backend_admin = get_option( 'frontend_admin_menu_admin_menu_backend' );
+        
+        $rol = $current_user->roles[0]; 
+  
+        if ( is_admin() && $backend_admin > 0 && $rol !== 'administrator' ) {
+            
+            echo '<style type="text/css">#collapse-menu { display: none; visibility: hidden; }</style>';
+                
+            remove_menu_page( 'index.php' );                  //Dashboard
+            remove_menu_page( 'edit.php' );                   //Posts
+            remove_menu_page( 'upload.php' );                 //Media
+            remove_menu_page( 'edit.php?post_type=page' );    //Pages
+            remove_menu_page( 'edit-comments.php' );          //Comments
+            remove_menu_page( 'themes.php' );                 //Appearance
+            remove_menu_page( 'plugins.php' );                //Plugins
+            remove_menu_page( 'users.php' );                  //Users
+            remove_menu_page( 'profile.php' );                  //Profile
+            remove_menu_page( 'tools.php' );                  //Tools
+            remove_menu_page( 'options-general.php' );        //Settings
+                
+        }
+    }
 }
 
 function frontend_admin_menu_render( $menu ) {
@@ -146,8 +205,6 @@ function frontend_admin_menu_render( $menu ) {
             $output .= wp_nav_menu( $defaults );
         $output .= '</div>';
     $output .= '</div>';
-    
-    $output = str_replace('<a',"<a target='_blank'",$output);
     
     return $output;
     

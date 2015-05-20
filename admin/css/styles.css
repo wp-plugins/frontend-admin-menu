@@ -1,44 +1,44 @@
-#frontend-admin-menu {
+#frontend-admin-menu-backend {
     width:100%;
 }
 
-#frontend-admin-menu ul {
+#frontend-admin-menu-backend ul {
     margin:0;
     padding:0;
 }
     
-#frontend-admin-menu li {
+#frontend-admin-menu-backend li {
     list-style-type: square;
 }
 
-#frontend-admin-menu table {
+#frontend-admin-menu-backend table {
     width:100%;
 }
 
-#frontend-admin-menu table td:first-child {
+#frontend-admin-menu-backend table td:first-child {
     width:10%;
     text-align: right;
 }
 
-#frontend-admin-menu textarea, 
-#frontend-admin-menu input[type="text"] {
+#frontend-admin-menu-backend textarea, 
+#frontend-admin-menu-backend input[type="text"] {
     width:80%; 
 }
 
-#frontend-admin-menu textarea {
+#frontend-admin-menu-backend textarea {
     min-height: 100px;
 }
 
-#frontend-admin-menu #gs-middle {
+#frontend-admin-menu-backend #gs-middle {
     width:100%; 
     float:left; 
 }
-#frontend-admin-menu #gs-middle .container {
+#frontend-admin-menu-backend #gs-middle .container {
     float:left; 
     width:100%;
 }
 
-#frontend-admin-menu .wgc-box {
+#frontend-admin-menu-backend .wgc-box {
     border: 1px solid #dfdfdf;
     border-radius: 3px;
     margin: 10px 0;
@@ -49,7 +49,7 @@
     background: #ffffff;
 }
 
-#frontend-admin-menu .wgc-box .header {
+#frontend-admin-menu-backend .wgc-box .header {
     height: 28px;
     margin: 0px;
     padding: 0px 10px;
@@ -70,12 +70,12 @@
     background: linear-gradient(to bottom, #f7f7f7 0%, #e6e6e6 100%); 
 }
 
-#frontend-admin-menu .wgc-box .header.medium {
+#frontend-admin-menu-backend .wgc-box .header.medium {
     height: 38px;
     line-height: 38px; 
 }
 
-#frontend-admin-menu .wgc-box .header h4 {
+#frontend-admin-menu-backend .wgc-box .header h4 {
     margin: 0;
     padding: 0;
     float: left;
@@ -88,7 +88,7 @@
     text-align: left; 
 }
 
-#frontend-admin-menu .wgc-box-body {
+#frontend-admin-menu-backend .wgc-box-body {
     padding: 1%;
     float: left;
     width: 98%;
