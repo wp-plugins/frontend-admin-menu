@@ -73,7 +73,7 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_admin_bar" id="frontend_admin_menu_admin_bar" value="1" <?php print $checked_admin_bar; ?> /></td>
-                        <td><label for="frontend_admin_menu_admin_bar">Hide frontend admin bar? <i>(Reload page after save)</i></label></td>
+                        <td><label for="frontend_admin_menu_admin_bar">Hide admin bar? <i>(Reload page after save)</i></label></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_admin_menu_backend" id="frontend_admin_menu_admin_menu_backend" value="1" <?php print $checked_backend_menu; ?> /></td>
