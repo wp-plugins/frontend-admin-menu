@@ -73,6 +73,7 @@
 #frontend-admin-menu-items ul li a{
     color: #fff;
     padding: 5px 20px 5px 10px;
+    text-decoration: none;
 }
 
 #frontend-admin-menu-items ul li a:hover {
