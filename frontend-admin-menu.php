@@ -3,14 +3,14 @@
 Plugin Name: Frontend admin menu
 Plugin URI: http://www.studiosweb.es/
 Description: Customizable menu administration from the frontend
-Version: 1.2
+Version: 1.3
 Author: Alberto Pérez
 Author URI: http://www.studiosweb.es
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ7J929GYWKLY
 License: A "Slug" license name e.g. GPL2
 */
 
-define( 'FRONTEND_ADMIN_MENU_VERSION', '1.2' );
+define( 'FRONTEND_ADMIN_MENU_VERSION', '1.3' );
 define( 'FRONTEND_ADMIN_MENU_DIR', plugin_dir_path(__FILE__) );
 define( 'FRONTEND_ADMIN_MENU_URL', plugin_dir_url(__FILE__) );
 
@@ -192,7 +192,7 @@ function frontend_admin_menu_render( $menu ) {
 
     );
 
-    $output = '<div id="frontend-admin-menu">';
+    $output = '<div id="frontend-admin-menu-menu">';
         $output .= '<div id="frontend-admin-menu-icon">';
             $output .= '<img src="' . FRONTEND_ADMIN_MENU_URL . 'images/icon-settings.png" />';
         $output .= '</div>';
