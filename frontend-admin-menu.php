@@ -2,7 +2,7 @@
 /*
 Plugin Name: Frontend admin menu
 Plugin URI: http://www.studiosweb.es/
-Description: With this plugin you can create menus for administration and assign roles and then display them in the frontend / backend of the website.  This plugin greatly streamlines workflow managers.
+Description: With this plugin you can create menus for administration and assign roles and then display them in the frontend / backend of the website.
 Version: 1.4
 Author: Alberto Pérez
 Author URI: http://www.studiosweb.es
