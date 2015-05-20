@@ -1,0 +1,103 @@
+#frontend-admin-menu-menu {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+#frontend-admin-menu-icon {
+    -webkit-border-top-right-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    -moz-border-radius-topright: 15px;
+    -moz-border-radius-bottomright: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: rgb(232,180,118);
+    background: -moz-linear-gradient(45deg,  rgba(232,180,118,1) 0%, rgba(234,129,0,1) 100%); 
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(232,180,118,1)), color-stop(100%,rgba(234,129,0,1))); 
+    background: -webkit-linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%); 
+    background: -o-linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%); 
+    background: -ms-linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%);
+    background: linear-gradient(45deg,  rgba(232,180,118,1) 0%,rgba(234,129,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8b476', endColorstr='#ea8100',GradientType=1 ); 
+    text-align: right;
+    padding: 10px;
+    color: #fff;
+    position:relative;
+    line-height: 5px;
+}
+
+#frontend-admin-menu-icon:hover {
+    cursor:pointer;
+}
+
+#frontend-admin-menu-items {
+    display: block;
+    margin: -20px 0 0 0;
+    padding: 30px 0 50px 0;
+    -webkit-border-bottom-right-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    overflow: auto;
+    height: 100%;
+    background: #000;
+    font-size: 16px;
+    font-family: Arial;
+}
+
+#frontend-admin-menu-items ul {
+    margin: 0;
+}
+
+#frontend-admin-menu-items ul li {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
+    padding: 0 0 0 10px;
+}
+
+#frontend-admin-menu-items ul li > * {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+}  
+
+#frontend-admin-menu-items ul li > ul { 
+    display: block;
+}
+
+#frontend-admin-menu-items ul li a{
+    color: #fff;
+    padding: 5px 20px 5px 10px;
+}
+
+#frontend-admin-menu-items ul li a:hover {
+    color: #faac58;
+}
+
+#frontend-admin-menu-items .sub-menu li {
+    border:0;
+}
+
+#frontend-admin-menu-items ul li .expand:hover {
+    cursor:pointer;
+}
+
+#frontend-admin-menu-items .frontend-admin-menu-childen-icon-down {
+    background: url("../images/arrow-down.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    padding:5px 0px 5px 20px;
+}
+
+#frontend-admin-menu-items .frontend-admin-menu-childen-icon-right {
+    background: url("../images/arrow-right.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    padding:10px 0 5px 10px;
+}
+
