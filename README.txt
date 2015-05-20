@@ -14,11 +14,14 @@ With this plugin you can create menus for administration and assign roles and th
 
 **BASIC OPTIONS**  
 
-* **MANAGE MENU**  
-Creates a menu for role
+* **Manage your administration menu links**  
+Creates a menu by role and assign it to him. After this users can manage everything more agile
 
-* **CUSTOMIZE YOUR MENU**  
-Being wordpress menus , you can create as many of the menu items as you wish and manage your way
+* **Hide / Show admin bar**  
+With this plugin you can enable or disable the top bar WordPress admin
+
+* **Enable admin menu to backend**  
+You can also hide the menu on the left by default WordPress admin area and display the menu that you have created for each role
 
 
 == Installation ==
