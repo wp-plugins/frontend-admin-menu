@@ -3,14 +3,14 @@
 Plugin Name: Frontend admin menu
 Plugin URI: http://www.studiosweb.es/
 Description: Customizable menu administration from the frontend
-Version: 1.1
+Version: 1.2
 Author: Alberto Pérez
 Author URI: http://www.studiosweb.es
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ7J929GYWKLY
 License: A "Slug" license name e.g. GPL2
 */
 
-define( 'FRONTEND_ADMIN_MENU_VERSION', '1.1' );
+define( 'FRONTEND_ADMIN_MENU_VERSION', '1.2' );
 define( 'FRONTEND_ADMIN_MENU_DIR', plugin_dir_path(__FILE__) );
 define( 'FRONTEND_ADMIN_MENU_URL', plugin_dir_url(__FILE__) );
 
@@ -167,17 +167,12 @@ function frontend_admin_menu_hide_items_backend_menu () {
             
             echo '<style type="text/css">#collapse-menu { display: none; visibility: hidden; }</style>';
                 
-            remove_menu_page( 'index.php' );                  //Dashboard
-            remove_menu_page( 'edit.php' );                   //Posts
-            remove_menu_page( 'upload.php' );                 //Media
-            remove_menu_page( 'edit.php?post_type=page' );    //Pages
-            remove_menu_page( 'edit-comments.php' );          //Comments
-            remove_menu_page( 'themes.php' );                 //Appearance
-            remove_menu_page( 'plugins.php' );                //Plugins
-            remove_menu_page( 'users.php' );                  //Users
-            remove_menu_page( 'profile.php' );                  //Profile
-            remove_menu_page( 'tools.php' );                  //Tools
-            remove_menu_page( 'options-general.php' );        //Settings
+           print '
+            <style type="text/css">
+                    #adminmenuwrap ul#adminmenu {
+                        display:none;
+                    }
+            </style>';
                 
         }
     }
