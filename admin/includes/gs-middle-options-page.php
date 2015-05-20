@@ -77,7 +77,7 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_admin_menu_backend" id="frontend_admin_menu_admin_menu_backend" value="1" <?php print $checked_backend_menu; ?> /></td>
-                        <td><label for="frontend_admin_menu_admin_menu_backend">Hide admin menu items in backend to all roles? <i>(This isn´t apply to Administrator)</i></label></td>
+                        <td><label for="frontend_admin_menu_admin_menu_backend">Enable admin backend menu to all roles? <i>(This isn´t apply to Administrator)</i></label></td>
                     </tr>
                 </table>
             </div>
