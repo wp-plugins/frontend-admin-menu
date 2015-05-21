@@ -61,7 +61,7 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
 
 <div class="container">
     <form name="frontend_admin_menu_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI'] ); ?>">
-         <div class="wgc-box">
+         <div class="wgc-box wgc-box-1">
             <div class="header medium">
                 <?php _e( '<h4>Basic options</h4>', 'frontend-admin-menu' ); ?>
             </div>
@@ -69,22 +69,23 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                 <table>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_status" id="frontend_admin_menu_status" value="1" <?php print $checked_status; ?> /></td>
-                        <td><label for="frontend_admin_menu_status">Enabled frontend admin menu? <i>(Remember to mapping a menu to rol)</i></label></td>
+                        <td><label for="frontend_admin_menu_status"><?php _e( 'Enabled frontend admin menu? <i>(Remember to mapping a menu to rol)</i>', 'frontend-admin-menu' ); ?></label></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_admin_bar" id="frontend_admin_menu_admin_bar" value="1" <?php print $checked_admin_bar; ?> /></td>
-                        <td><label for="frontend_admin_menu_admin_bar">Hide admin bar? <i>(Reload page after save)</i></label></td>
+                        <td><label for="frontend_admin_menu_admin_bar"><?php _e( 'Hide admin bar? <i>(Reload page after save)</i>', 'frontend-admin-menu' ); ?></label></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_admin_menu_backend" id="frontend_admin_menu_admin_menu_backend" value="1" <?php print $checked_backend_menu; ?> /></td>
-                        <td><label for="frontend_admin_menu_admin_menu_backend">Enable admin backend menu to all roles? <i>(This isn´t apply to Administrator)</i></label></td>
+                        <td><label for="frontend_admin_menu_admin_menu_backend"><?php _e( 'Enable admin backend menu to all roles? <i>(This isn´t apply to Administrator)</i>', 'frontend-admin-menu' ); ?></label></td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="wgc-box">
+        <div class="wgc-box wgc-box-2">
             <div class="header medium">
                 <?php _e( '<h4>Mapping menu to roles</h4>', 'frontend-admin-menu' ); ?>
+                ( <a href="<?php echo admin_url(); ?>nav-menus.php">Manage your menus</a> - <a href="<?php echo admin_url(); ?>nav-menus.php?action=edit&menu=0">Create new menu</a> )
             </div>
             <div class="wgc-box-body">
                 <table>
@@ -94,11 +95,11 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                         $currentmenu = get_option( 'frontend_admin_menu_mapping_' . $key );
                         print '<tr>';
                             print '<td>';
-                                print $rol['name'];
+                                print _e( 'Choose a menu to', 'frontend-admin-menu' ).' '.$rol['name'].': ';
                             print '</td>';
                             print '<td>';
                             print '<select name="frontend_admin_menu_mapping_' . $key . '" id="frontend_admin_menu_mapping_' . $key . '">';
-                                print '<option value=""> -- No menu -- </option>';
+                                print '<option value=""> -- No menu selected -- </option>';
                                 foreach ( $menus as $val => $menu ) {
                                     if ( $currentmenu == $menu->slug) {
                                         $selectedmenu = 'selected';

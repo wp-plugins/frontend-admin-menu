@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin menu, menu frontend, admin menu frontend, manage menu frontend, roles menu, administration menu
 Requires at least: 3.4
 Tested up to: 4.2.2
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,12 @@ This section describes how to install the plugin and get it working.
 5. If you enable the last option , all users except the administrator can view the corresponding menu in the administration and the original admin menu is hiding.
 
 == Changelog ==
+
+= Version 1.7 =
+* 	Add: Links manage menu in admin page
+* 	Add: Modifications of visibility on mapping menu to roles
+*       Add: Some traductions
+* 	Fixed: CSS text align of mapping menu to roles table
 
 = Version 1.6 =
 * 	Fixed: Activation hook

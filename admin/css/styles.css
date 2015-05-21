@@ -15,8 +15,8 @@
     width:100%;
 }
 
-#frontend-admin-menu-backend table td:first-child {
-    width:10%;
+#frontend-admin-menu-backend .wgc-box-2 table td:first-child {
+    width:15%;
     text-align: right;
 }
 
