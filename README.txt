@@ -43,7 +43,7 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= Version 1.5 =
+= Version 1.6 =
 * 	Fixed: Activation hook
 
 = Version 1.5 =
