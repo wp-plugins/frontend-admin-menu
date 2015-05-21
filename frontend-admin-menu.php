@@ -3,14 +3,14 @@
 Plugin Name: Frontend admin menu
 Plugin URI: http://www.studiosweb.es/
 Description: With this plugin you can create menus for administration and assign roles and then display them in the frontend / backend of the website.
-Version: 1.4
+Version: 1.5
 Author: Alberto Pérez
 Author URI: http://www.studiosweb.es
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ7J929GYWKLY
 License: A "Slug" license name e.g. GPL2
 */
 
-define( 'FRONTEND_ADMIN_MENU_VERSION', '1.4' );
+define( 'FRONTEND_ADMIN_MENU_VERSION', '1.5' );
 define( 'FRONTEND_ADMIN_MENU_DIR', plugin_dir_path(__FILE__) );
 define( 'FRONTEND_ADMIN_MENU_URL', plugin_dir_url(__FILE__) );
 
@@ -59,7 +59,7 @@ function frontend_admin_menu_row_meta( $links, $file ) {
 
 add_action( 'admin_menu', 'frontend_admin_menu_menu' );
 function frontend_admin_menu_menu() {
-    add_menu_page( 'Admin menu', 'Admin menu', 'manage_options', 'frontend_admin_menu_options_page', 'frontend_admin_menu_import_options_page', FRONTEND_ADMIN_MENU_URL.'admin/images/frontend_admin_menu-icon.png', 104 );
+    add_menu_page( 'Admin menu', 'Admin menu', 'manage_options', 'frontend_admin_menu_options_page', 'frontend_admin_menu_import_options_page', FRONTEND_ADMIN_MENU_URL.'admin/images/frontend_admin_menu-icon.png' );
 }
 
 function frontend_admin_menu_import_options_page() {
