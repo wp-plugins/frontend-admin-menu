@@ -20,6 +20,10 @@
     text-align: right;
 }
 
+#frontend-admin-menu-backend .wgc-box-3 table td:first-child {
+    width:5%;
+}
+
 #frontend-admin-menu-backend textarea, 
 #frontend-admin-menu-backend input[type="text"] {
     width:80%; 

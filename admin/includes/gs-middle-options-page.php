@@ -7,7 +7,8 @@ if( ! empty( $_POST['Submit'] ) && $_POST['Submit'] == 'Save options' ) {
     $frontend_admin_menu_status = sanitize_text_field ( isset( $_POST['frontend_admin_menu_status'] ) ? esc_html( trim( $_POST['frontend_admin_menu_status'] ) ) : null );
     $frontend_admin_menu_admin_bar = sanitize_text_field ( isset( $_POST['frontend_admin_menu_admin_bar'] ) ? esc_html( trim( $_POST['frontend_admin_menu_admin_bar'] ) ) : null );
     $frontend_admin_menu_admin_menu_backend = sanitize_text_field ( isset( $_POST['frontend_admin_menu_admin_menu_backend'] ) ? esc_html( trim( $_POST['frontend_admin_menu_admin_menu_backend'] ) ) : null );
-            
+    $frontend_admin_menu_color = sanitize_text_field ( isset( $_POST['frontend_admin_menu_color'] ) ? esc_html( trim( $_POST['frontend_admin_menu_color'] ) ) : null );       
+    
     $frontend_admin_menu_mapping = array();
     foreach ( $roles as $key => $rol ) {
         $frontend_admin_menu_mapping[$key] = sanitize_text_field ( isset( $_POST['frontend_admin_menu_mapping_' . $key] ) ? esc_html( trim( $_POST['frontend_admin_menu_mapping_' . $key] ) ) : null );
@@ -15,8 +16,9 @@ if( ! empty( $_POST['Submit'] ) && $_POST['Submit'] == 'Save options' ) {
     }
     update_option( 'frontend_admin_menu_status', $frontend_admin_menu_status );
     update_option( 'frontend_admin_menu_admin_bar', $frontend_admin_menu_admin_bar );
-    update_option( 'frontend_admin_menu_admin_menu_backend',  $frontend_admin_menu_admin_menu_backend);
-
+    update_option( 'frontend_admin_menu_admin_menu_backend',  $frontend_admin_menu_admin_menu_backend );
+    update_option( 'frontend_admin_menu_color',  $frontend_admin_menu_color );
+    
     print '<div class="updated">';
          _e( 'Options saved.' );
     print '</div>';
@@ -26,7 +28,7 @@ if( ! empty( $_POST['Submit'] ) && $_POST['Submit'] == 'Save options' ) {
 $frontend_admin_menu_status = get_option( 'frontend_admin_menu_status' );
 $frontend_admin_menu_admin_bar = get_option( 'frontend_admin_menu_admin_bar' );
 $frontend_admin_menu_admin_menu_backend = get_option( 'frontend_admin_menu_admin_menu_backend' );
-
+$frontend_admin_menu_color = get_option( 'frontend_admin_menu_color' );
 
 if ( $frontend_admin_menu_status > 0 ) {
     
@@ -113,6 +115,38 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                         print '</tr>';
                     }
                     ?>
+                </table>
+            </div>
+        </div>
+        <div class="wgc-box wgc-box-3">
+            <div class="header medium">
+                <?php _e( '<h4>Menu appearance</h4>', 'frontend-admin-menu' ); ?>
+            </div>
+            <div class="wgc-box-body">
+                <table>
+                    <tr>
+                        <td><?php _e( 'Theme:', 'frontend-admin-menu' ); ?></td>
+                        <td>
+                            <select name="frontend_admin_menu_color" id="frontend_admin_menu_color">
+                                <?php 
+                                $colors = array(
+                                    "orange" => "orange",
+                                    "blue" => "blue",
+                                    "red" => "red",
+                                    "green" => "green",
+                                    "yellow" => "yellow",
+                                    "purple" => "purple"
+                                );
+                                foreach ( $colors as $color ) {
+                                    $selected = false;
+                                    if( $frontend_admin_menu_color == $color ) {
+                                        $selected = "selected";
+                                    }
+                                    print '<option value="'.$color.'" '.$selected.'>'.$color.'</option>';
+                                }?>
+                            </select>    
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
