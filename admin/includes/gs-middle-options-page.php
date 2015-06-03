@@ -116,6 +116,14 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                     }
                     ?>
                 </table>
+                <table>
+                    <tr>
+                        <td align="left">
+                            <?php _e( 'NOTE: If you want to create more roles we recommend you the plugin: ', 'frontend-admin-menu' ); ?>
+                            <a href="https://wordpress.org/plugins/user-role-editor/" target="_blank">User Role Editor</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="wgc-box wgc-box-3">
