@@ -7,6 +7,7 @@ $roles = get_editable_roles();
 
 foreach ( $roles as $key => $rol ) {
     delete_option( 'frontend_admin_menu_mapping_' . $key);
+    delete_option( 'frontend_admin_menu_mapping_admin_bar_' . $key);
 }
 
 delete_option( 'frontend_admin_menu_status' );

@@ -5,17 +5,19 @@ $menus = frontend_admin_menu_menus();
 if( ! empty( $_POST['Submit'] ) && $_POST['Submit'] == 'Save options' ) {
 
     $frontend_admin_menu_status = sanitize_text_field ( isset( $_POST['frontend_admin_menu_status'] ) ? esc_html( trim( $_POST['frontend_admin_menu_status'] ) ) : null );
-    $frontend_admin_menu_admin_bar = sanitize_text_field ( isset( $_POST['frontend_admin_menu_admin_bar'] ) ? esc_html( trim( $_POST['frontend_admin_menu_admin_bar'] ) ) : null );
     $frontend_admin_menu_admin_menu_backend = sanitize_text_field ( isset( $_POST['frontend_admin_menu_admin_menu_backend'] ) ? esc_html( trim( $_POST['frontend_admin_menu_admin_menu_backend'] ) ) : null );
     $frontend_admin_menu_color = sanitize_text_field ( isset( $_POST['frontend_admin_menu_color'] ) ? esc_html( trim( $_POST['frontend_admin_menu_color'] ) ) : null );       
     
     $frontend_admin_menu_mapping = array();
+    $frontend_admin_menu_mapping_admin_bar = array();
     foreach ( $roles as $key => $rol ) {
         $frontend_admin_menu_mapping[$key] = sanitize_text_field ( isset( $_POST['frontend_admin_menu_mapping_' . $key] ) ? esc_html( trim( $_POST['frontend_admin_menu_mapping_' . $key] ) ) : null );
+        $frontend_admin_menu_mapping_admin_bar[$key] = sanitize_text_field ( isset( $_POST['frontend_admin_menu_mapping_admin_bar_' . $key] ) ? esc_html( trim( $_POST['frontend_admin_menu_mapping_admin_bar_' . $key] ) ) : null );
         update_option( 'frontend_admin_menu_mapping_' . $key, $frontend_admin_menu_mapping[$key]);
+        update_option( 'frontend_admin_menu_mapping_admin_bar_' . $key, $frontend_admin_menu_mapping_admin_bar[$key]);
     }
+    
     update_option( 'frontend_admin_menu_status', $frontend_admin_menu_status );
-    update_option( 'frontend_admin_menu_admin_bar', $frontend_admin_menu_admin_bar );
     update_option( 'frontend_admin_menu_admin_menu_backend',  $frontend_admin_menu_admin_menu_backend );
     update_option( 'frontend_admin_menu_color',  $frontend_admin_menu_color );
     
@@ -26,7 +28,6 @@ if( ! empty( $_POST['Submit'] ) && $_POST['Submit'] == 'Save options' ) {
 }
 
 $frontend_admin_menu_status = get_option( 'frontend_admin_menu_status' );
-$frontend_admin_menu_admin_bar = get_option( 'frontend_admin_menu_admin_bar' );
 $frontend_admin_menu_admin_menu_backend = get_option( 'frontend_admin_menu_admin_menu_backend' );
 $frontend_admin_menu_color = get_option( 'frontend_admin_menu_color' );
 
@@ -37,16 +38,6 @@ if ( $frontend_admin_menu_status > 0 ) {
 } else {
   
     $checked_status = false;
-    
-}
-
-if ( $frontend_admin_menu_admin_bar > 0 ) {
-    
-    $checked_admin_bar = "checked";
-    
-} else {
-  
-    $checked_admin_bar = false;
     
 }
 
@@ -72,10 +63,6 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_status" id="frontend_admin_menu_status" value="1" <?php print $checked_status; ?> /></td>
                         <td><label for="frontend_admin_menu_status"><?php _e( 'Enabled frontend admin menu? <i>(Remember to mapping a menu to rol)</i>', 'frontend-admin-menu' ); ?></label></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="frontend_admin_menu_admin_bar" id="frontend_admin_menu_admin_bar" value="1" <?php print $checked_admin_bar; ?> /></td>
-                        <td><label for="frontend_admin_menu_admin_bar"><?php _e( 'Hide admin bar? <i>(Reload page after save)</i>', 'frontend-admin-menu' ); ?></label></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="frontend_admin_menu_admin_menu_backend" id="frontend_admin_menu_admin_menu_backend" value="1" <?php print $checked_backend_menu; ?> /></td>
@@ -111,6 +98,49 @@ if ( $frontend_admin_menu_admin_menu_backend > 0 ) {
                                     print '<option value="' . $menu->slug . '" ' . $selectedmenu . '>' . $menu->name . '</option>';
                                 }
                             print '</select>';
+                            print '</td>';
+                        print '</tr>';
+                    }
+                    ?>
+                </table>
+                <table>
+                    <tr>
+                        <td align="left">
+                            <?php _e( 'NOTE: If you want to create more roles we recommend you the plugin: ', 'frontend-admin-menu' ); ?>
+                            <a href="https://wordpress.org/plugins/user-role-editor/" target="_blank">User Role Editor</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="wgc-box wgc-box-2">
+            <div class="header medium">
+                <?php _e( '<h4>Show / Hide admin bar</h4>', 'frontend-admin-menu' ); ?>
+            </div>
+            <div class="wgc-box-body">
+                <table>
+                    <?php
+                    foreach ( $roles as $key => $rol ) {
+                        $currentadmin = get_option( 'frontend_admin_menu_mapping_admin_bar_' . $key );
+                        print '<tr>';
+                            print '<td>';
+                                print _e( 'Top admin bar to:', 'frontend-admin-menu' ).' '.$rol['name'].': ';
+                            print '</td>';
+                            print '<td>';
+                                print '<select name="frontend_admin_menu_mapping_admin_bar_' . $key . '" id="frontend_admin_menu_mapping_admin_bar_' . $key . '">';
+                                    $posibility = array(
+                                        1 => 'Hide', 
+                                        0 => 'Show'     
+                                    );
+                                    foreach ( $posibility as $key => $pos ) {
+                                        if ( isset( $currentadmin ) && $currentadmin == $key ) {
+                                            $selectedadmin = 'selected';
+                                        } else {
+                                            $selectedadmin = false;
+                                        }
+                                        print '<option value="'.$key.'" '.$selectedadmin.'>'.$pos.'</option>';
+                                    }
+                                print '</select>';
                             print '</td>';
                         print '</tr>';
                     }

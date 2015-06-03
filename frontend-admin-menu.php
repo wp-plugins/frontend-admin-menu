@@ -3,14 +3,14 @@
 Plugin Name: Frontend admin menu
 Plugin URI: http://www.studiosweb.es/
 Description: With this plugin you can create menus for administration and assign roles and then display them in the frontend / backend of the website.
-Version: 2.2
+Version: 2.3
 Author: Alberto Pérez
 Author URI: http://www.studiosweb.es
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ7J929GYWKLY
 License: A "Slug" license name e.g. GPL2
 */
 
-define( 'FRONTEND_ADMIN_MENU_VERSION', '2.2' );
+define( 'FRONTEND_ADMIN_MENU_VERSION', '2.3' );
 define( 'FRONTEND_ADMIN_MENU_DIR', plugin_dir_path(__FILE__) );
 define( 'FRONTEND_ADMIN_MENU_URL', plugin_dir_url(__FILE__) );
 
@@ -137,18 +137,27 @@ add_action( 'admin_head', 'frontend_admin_menu_admin_bar' );
 
 function frontend_admin_menu_admin_bar() { 
     
-    $disabled_admin_bar = get_option( 'frontend_admin_menu_admin_bar' );
-    
-    if ( $disabled_admin_bar > 0 ) {
-        print '
-	<style type="text/css">
-		#wpadminbar {
-                    display:none;
-		}
-                html.wp-toolbar {
-                    padding:0;
-                }
-	</style>';
+    if ( is_user_logged_in() ) {
+        
+        global $current_user;
+        
+        $rol = $current_user->roles[0]; 
+
+        $disabled_admin_bar = get_option( 'frontend_admin_menu_mapping_admin_bar_' . $rol );
+
+        if ( $disabled_admin_bar > 0 ) {
+            
+            print '
+            <style type="text/css">
+                    #wpadminbar {
+                        display:none;
+                    }
+                    html.wp-toolbar {
+                        padding:0;
+                    }
+            </style>';
+            
+        } 
     }
 }
 
